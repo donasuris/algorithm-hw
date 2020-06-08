@@ -2,73 +2,78 @@
 #include <fstream>
 #include <string>
 using namespace std;
-ofstream fout("output.txt");
 
-class Node {
-public:
-	Node* prev;
-	string val;
-
-	Node(string val) {
-		this->val = val;
-		this->prev = NULL;
+struct Node {
+	Node(int value) {
+		this->next = NULL;
+		this->value = value;
 	}
+	Node* next;
+	int value; 
 };
 
-class stack {
-public:
-	Node* head;
-	int len;
+struct stack {
+	long long count;
+	Node* head; 
 
 	stack() {
-		this->len = 0;
-		this->head = new Node("0");
+		count = 0;
+		head = new Node(0);
+		head->next = NULL;
 	}
 
-	void push(string val) {
-		Node* tmp = new Node(val);
-		tmp->prev = head->prev;
-		head->prev = tmp;
-		++len;
+	void push(int value)  {
+		Node* temp = new Node(value);
+		temp->next = head->next;
+		head->next = temp;
+		count++;
 	}
 
-	void pop() {
-		--len;
-		Node* tmp = head->prev;
-		head->prev = tmp->prev;
-		delete tmp;
+	int pop() {
+		if (count > 0) {
+			int temp = head->next->value;
+			Node* del = head->next;
+			count--;
+			head->next = head->next->next;
+			delete del;
+			return temp;
+		}
+		else cout << "Empty queue";
 	}
 
-	void print(int c, int len, Node* tmp) {
-		if (c < len) print(++c, len, tmp->prev);
-		fout << tmp->val << " ";
+	void print(Node* tmp) {
+		if (tmp != NULL) {
+			print(tmp->next);
+			cout << tmp->value << ' ';
+		}
+	}
+
+	void print() {
+		print(head->next);
 	}
 };
+
 
 int main()
 {
-	ifstream fin("input.txt");
-	ofstream fout("output.txt");
-	stack s;
-	string str;
-	while (fin >> str) {
-		if (str[0] == '-') {
-			if (s.len < 1){
-				s.len--;
-				fout << "ERROR";
+	ifstream input("input.txt");
+	freopen("output.txt", "w", stdout);
+	stack stack;
+	string cmd;
+	while (input >> cmd) {
+		if (cmd[0] == '-') {
+			if (stack.count < 1) {
+				stack.count--;
+				cout << "ERROR";
 				break;
 			}
-			else {
-				s.pop();
-			}
+			else stack.pop();
 		}
 		else {
-			string c = str.substr(1);
-			s.push(c);
+			string temp = cmd.substr(1);
+			stack.push(atoi(temp.c_str()));
 		}
 	}
-	if (s.len == 0) fout << "EMPTY";
-	else if (s.len > 0) {
-		s.print(1, s.len, s.head->prev);
-	}
+	if (stack.count == 0) cout << "EMPTY";
+	else stack.print();
 }
