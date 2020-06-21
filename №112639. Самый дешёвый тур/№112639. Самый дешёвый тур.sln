@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "№112639. Самый дешёвый тур", "№112639. Самый дешёвый тур\№112639. Самый дешёвый тур.vcxproj", "{26E6E6D0-CF71-4FAC-B94D-FC2BA84CCDBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26E6E6D0-CF71-4FAC-B94D-FC2BA84CCDBD}.Debug|x64.ActiveCfg = Debug|x64
+		{26E6E6D0-CF71-4FAC-B94D-FC2BA84CCDBD}.Debug|x64.Build.0 = Debug|x64
+		{26E6E6D0-CF71-4FAC-B94D-FC2BA84CCDBD}.Debug|x86.ActiveCfg = Debug|Win32
+		{26E6E6D0-CF71-4FAC-B94D-FC2BA84CCDBD}.Debug|x86.Build.0 = Debug|Win32
+		{26E6E6D0-CF71-4FAC-B94D-FC2BA84CCDBD}.Release|x64.ActiveCfg = Release|x64
+		{26E6E6D0-CF71-4FAC-B94D-FC2BA84CCDBD}.Release|x64.Build.0 = Release|x64
+		{26E6E6D0-CF71-4FAC-B94D-FC2BA84CCDBD}.Release|x86.ActiveCfg = Release|Win32
+		{26E6E6D0-CF71-4FAC-B94D-FC2BA84CCDBD}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A61EE3C-01AB-4F8C-8ADB-BA441041B3E1}
+	EndGlobalSection
+EndGlobal
