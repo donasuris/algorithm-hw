@@ -10,7 +10,7 @@ public:
 	bin_t();
 	bin_t(int val);
 	bin_t* push(bin_t* root, int val);
-	int hight(bin_t* root);
+	int height(bin_t* root);
 	void print(bin_t* root);
 };
 
@@ -35,12 +35,12 @@ bin_t* bin_t::push(bin_t* root, int val) {
 	return root;
 }
 
-int bin_t::hight(bin_t* root) {
+int bin_t::height(bin_t* root) {
 	if (root == NULL)
 		return 0;
 
-	int left_hight = hight(root->left);
-	int right_hight = hight(root->right);
+	int left_hight = height(root->left);
+	int right_hight = height(root->right);
 
 	if (left_hight > right_hight)
 		return  left_hight + 1;
@@ -78,7 +78,7 @@ int main()
 		}
 		cin >> value;
 	}
-	cout << tree.hight(root) << endl;
+	cout << tree.height(root) << endl;
 
 	tree.print(root);  //вывод дерева на печать 
 }
