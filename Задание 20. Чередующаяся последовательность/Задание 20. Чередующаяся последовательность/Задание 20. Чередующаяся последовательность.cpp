@@ -19,31 +19,17 @@ public:
 
 	List();
 	List(const List&);
-	List(int count, int val = 0);
-	~List();
+	List(int count, int val = 0); //коунт элементов и все равны val
 
 	int Count();
-	Node* At(int);
-	int Value(int);
-	void Clear();
-	void Remove(int pos);
-	void Remove(Node*);
-	void Insert(int pos, int val);
+	Node* At(int); //выдает указатель на ноду
+	int Value(int); //вызывает Ат и берет значение этого нода
+	void Remove(int pos); //удалит ноду на такой позиции 
+	void Remove(Node*); //возьмет указатель на ноду и удалит ноду 
+	void Insert(int pos, int val); //вставить val на pos 
 	void PushBack(int n);
 	void PushFront(int n);
 	void Print();
-
-	List& operator = (const List&);
-	List operator + (const List&);
-
-	bool operator == (const List&);
-	bool operator != (const List&);
-	bool operator <= (const List&);
-	bool operator >= (const List&);
-	bool operator < (const List&);
-	bool operator > (const List&);
-
-	List operator - ();
 };
 
 List::List() {
@@ -69,11 +55,6 @@ List::List(int count, int val) {
 	tail = NULL;
 	this->count = 0;
 	for (int i = 0; i < count; i++) PushBack(val);
-}
-
-
-List::~List() {
-	Clear();
 }
 
 void List::PushFront(int n) {
@@ -154,10 +135,6 @@ void List::Print() {
 	}
 }
 
-void List::Clear() {
-	while (count != 0) Remove(0);
-}
-
 int List::Count() {
 	return count;
 }
@@ -173,78 +150,6 @@ int List::Value(int index) {
 	return At(index)->val;
 }
 
-List& List::operator = (const List& L) {
-	if (this == &L) return *this;
-	this->~List();
-	Node* temp = L.head;
-	while (temp != 0) {
-		PushBack(temp->val);
-		temp = temp->next;
-	}
-	return *this;
-}
-
-List List::operator + (const List& L) {
-	List result(*this);
-	Node* temp = L.head;
-	while (temp != 0) {
-		result.PushBack(temp->val);
-		temp = temp->next;
-	}
-	return result;
-}
-
-bool List::operator == (const List& L) {
-	if (count != L.count) return false;
-	Node* t1, * t2;
-	
-	t1 = head;
-	t2 = L.head;
-
-	while (t1 != 0) {
-		if (t1->val != t2->val) return false;
-		t1 = t1->next;
-		t2 = t2->next;
-	}
-	return true;
-}
-
-bool List::operator != (const List& L) {
-	return !(*this == L);
-}
-
-bool List::operator >= (const List& L) {
-	if (count > L.count) return true;
-	if (*this == L) return true;
-	return false;
-}
-
-bool List::operator <= (const List& L) {
-	if (count < L.count) return true;
-	if (*this == L) return true;
-	return false;
-}
-
-bool List::operator > (const List& L) {
-	if (count > L.count) return true;
-	return false;
-}
-
-bool List::operator < (const List& L) {
-	if (count < L.count) return true;
-	return false;
-}
-
-List List::operator - () {
-	List result;
-	Node* temp = head;
-	while (temp != 0) {
-		result.PushFront(temp->val);
-		temp = temp->next;
-	}
-	return result;
-}
-
 
 int main()
 {
@@ -255,8 +160,8 @@ int main()
 	cin >> el;
 	list.PushBack(el);
 
-	if (n != 1) {
-		if (n == 2) {
+	if (n != 1) { //если н не 1
+		if (n == 2) { 
 			cin >> el;
 			if (list.Value(0) != el) {
 				list.PushBack(el);
